@@ -14,12 +14,12 @@
 #SBATCH --array=0-50
 
 echo $SLURM_ARRAY_TASK_ID
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 0
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 0.2
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 0.4
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 0.6
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 0.8
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 1.0
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 1.2
-../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --fairness 0 --beta 1.4
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.2
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.4
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.6
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.8
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.0
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.2
+../fvae-env/bin/python3 eval.py --config_path configs/compas/compas_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.4
 
