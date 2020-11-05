@@ -1,0 +1,33 @@
+experiment: "compas_vfae"
+
+data:
+  train: 'data/to-ml-compas/compas_train.csv'
+  validate: 'data/to-ml-compas/compas_test.csv'
+  test: 'data/to-ml-compas/compas_test.csv'
+  name: 'Compas'
+  seed: 0
+
+batch_size: 128
+
+net:
+  name: 'FCVAE'
+  zdim: 8
+  depth: 2
+  depth_dec: 2
+  width_dec: 16
+  width: 16
+  input_dim: 6
+  learning_rate: 0.001
+  sdim: 4
+
+loss:
+  name: 'VAELoss'
+  beta: 0.0
+
+device: 'cpu'
+n_epochs: 400
+gamma: 0.0
+beta: 0.000
+method: 'vae'
+nclass_outcome: 1
+nclass_sensitive: 4

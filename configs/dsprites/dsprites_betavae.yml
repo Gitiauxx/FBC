@@ -1,0 +1,30 @@
+experiment: "dsprites-betavae"
+
+data:
+  path: '../data/dsprites-dataset/dsprites_ndarray_co1sh3sc6or40x32y32_64x64.npz'
+  name: 'DSprites'
+  seed: 0
+  n_train: 600000
+  n_test: 20000
+  n_validate: 20000
+  corr_coeff: 10
+
+batch_size: 128
+
+net:
+  name: 'CNNFFVAE'
+  zdim: 24
+  sdim: 4
+  learning_rate: 0.0001
+
+loss:
+  name: 'VAELoss'
+  beta: 0.0
+
+device: 'cuda'
+n_epochs: 50
+gamma: 0.0
+beta: 0.000
+method: 'vae'
+nclass_outcome: 3
+nclass_sensitive: 4

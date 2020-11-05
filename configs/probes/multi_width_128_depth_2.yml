@@ -1,0 +1,15 @@
+batch_size: 128
+
+classifier:
+  name: 'MLP'
+  width: 128
+  depth: 2
+
+loss:
+  name: 'MCELoss'
+
+learning_rate: 0.0001
+device: 'cpu'
+n_epochs: 200
+
+

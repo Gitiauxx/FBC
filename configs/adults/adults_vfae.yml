@@ -1,0 +1,35 @@
+experiment: "adult_vfae"
+
+data:
+  train: 'data/to-ml-adult/adult.data'
+  validate: 'data/to-ml-adult/adult.validate'
+  test: 'data/to-ml-adult/adult.test_true'
+  name: 'AdultDataSet'
+  seed: 0
+
+batch_size: 128
+
+net:
+  name: 'FCVAE'
+  zdim: 10
+  depth: 2
+  depth_dec: 2
+  width_dec: 64
+  width: 64
+  input_dim: 9
+  learning_rate: 0.001
+  activation: 'RELU'
+  sdim: 10
+
+
+loss:
+  name: 'VAELoss'
+  beta: 0.0
+
+device: 'cpu'
+n_epochs: 200
+method: 'vae'
+gamma: 0
+beta: 0
+nclass_outcome: 1
+nclass_sensitive: 10

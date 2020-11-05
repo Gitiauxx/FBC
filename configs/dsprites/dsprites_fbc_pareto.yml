@@ -1,0 +1,19 @@
+autoencoder: 'configs/dsprites/dsprites_fbc.yml'
+
+probes_list:
+  - 'configs/probes/multi_width_32_depth_4.yml'
+
+task_list:
+  - 'configs/probes/multi_width_32_depth_4.yml'
+
+decode: False
+
+experiment_type: 'predict_outcome_sensitive'
+
+seed: 0
+
+name: 'dsprites_fbc_auditor'
+
+logging_dir: './summaries'
+
+checkpoints: './checkpoints'

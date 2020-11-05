@@ -1,0 +1,44 @@
+experiment: "adult_fbc"
+
+data:
+  train: 'data/to-ml-adult/adult.data'
+  validate: 'data/to-ml-adult/adult.validate'
+  test: 'data/to-ml-adult/adult.test_true'
+  name: 'AdultDataSet'
+  seed: 0
+  tsne: True
+
+batch_size: 128
+
+net:
+  name: 'FC'
+  zdim: 10
+  zk: 2
+  k: 20
+  depth: 2
+  depth_dec: 2
+  width_dec: 64
+  width: 64
+  input_dim: 9
+  learning_rate: 0.001
+  sigma: 1
+  sdim: 2
+
+pmodel:
+  name: 'PixelCNN'
+  learning_rate: 0.0001
+  channels: 16
+
+loss:
+  name: 'MILoss'
+
+ploss:
+  name: 'CECondLoss'
+
+device: 'cpu'
+n_epochs: 200
+method: 'compression'
+gamma: 0
+beta: 0
+nclass_outcome: 1
+nclass_sensitive: 2

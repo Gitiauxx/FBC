@@ -1,0 +1,42 @@
+experiment: "compas_fbc"
+
+data:
+  train: ',,/data/to-ml-compas/compas_train.csv'
+  validate: '../data/to-ml-compas/compas_test.csv'
+  test: '../data/to-ml-compas/compas_test.csv'
+  name: 'Compas'
+  seed: 0
+
+batch_size: 128
+
+net:
+  name: 'FC'
+  zk: 4
+  zdim: 8
+  depth: 2
+  depth_dec: 2
+  width_dec: 16
+  width: 16
+  input_dim: 6
+  learning_rate: 0.0005
+  sigma: 1
+  k: 4
+  sdim: 4
+
+pmodel:
+  name: 'PixelCNN'
+  learning_rate: 0.0001
+  channels: 16
+
+loss:
+  name: 'MILoss'
+
+ploss:
+  name: 'CECondLoss'
+
+device: 'cpu'
+n_epochs: 50
+gamma: 0.0
+method: 'compression'
+nclass_outcome: 1
+nclass_sensitive: 4

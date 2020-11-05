@@ -1,0 +1,33 @@
+experiment: "heritage-mmd"
+
+data:
+  train: 'data/to-ml-heritage/heritage-train.csv'
+  validate: 'data/to-ml-heritage/heritage-validate.csv'
+  test: 'data/to-ml-heritage/heritage-test.csv'
+  name: 'HeritageDataset'
+
+batch_size: 128
+
+net:
+  name: 'FCVAE'
+  zdim: 24
+  depth: 2
+  depth_dec: 2
+  width_dec: 128
+  width: 128
+  input_dim: 65
+  learning_rate: 0.0005
+  sdim: 18
+
+loss:
+  name: 'VAELoss'
+  beta: 0.0
+
+device: 'cpu'
+n_epochs: 50
+method: 'vae'
+gamma: 0.0
+beta: 0.000
+nclass_outcome: 1
+nclass_sensitive: 18
+#transfer: True

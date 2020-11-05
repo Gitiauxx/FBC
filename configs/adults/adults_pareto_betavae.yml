@@ -1,0 +1,19 @@
+autoencoder: 'configs/adults/adult_betavae.yml'
+
+probes_list:
+  - 'configs/probes/multi_width_128_depth_2.yml'
+
+task_list:
+   - 'configs/probes/fc_width_128_depth_2.yml'
+
+decode: False
+
+experiment_type: 'predict_outcome_sensitive'
+
+seed: 0
+
+name: 'adult_betavae_auditor'
+
+logging_dir: './summaries'
+
+checkpoints: './checkpoints'
