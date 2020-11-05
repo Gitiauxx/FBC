@@ -10,8 +10,7 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'compas_adv_auditor'
+name: 'compas_adv_eo'
 
-logging_dir: './summaries'
+logging_dir: '/scratch/xgitiaux/Comp'
 
-checkpoints: './checkpoints'
