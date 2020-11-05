@@ -1,7 +1,7 @@
 experiment: "compas_adv"
 
 data:
-  train: './data/to-ml-compas/compas_train.csv'
+  train: '../data/to-ml-compas/compas_train.csv'
   validate: '../data/to-ml-compas/compas_train.csv'
   test: '../data/to-ml-compas/compas_test.csv'
   name: 'Compas'
