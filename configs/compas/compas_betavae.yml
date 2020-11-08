@@ -1,9 +1,9 @@
 experiment: "compas_mmd"
 
 data:
-  train: 'data/to-ml-compas/compas_train.csv'
-  validate: 'data/to-ml-compas/compas_test.csv'
-  test: 'data/to-ml-compas/compas_test.csv'
+  train: '../data/to-ml-compas/compas_train.csv'
+  validate: '../data/to-ml-compas/compas_test.csv'
+  test: '../data/to-ml-compas/compas_test.csv'
   name: 'Compas'
   seed: 0
 
