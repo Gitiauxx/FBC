@@ -12,8 +12,6 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'adult_betavae_auditor'
+name: 'adult_betavae_eo'
 
-logging_dir: './summaries'
-
-checkpoints: './checkpoints'
+logging_dir: '/scratch/xgitiaux/Comp'

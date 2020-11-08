@@ -1,9 +1,9 @@
 experiment: "adult_adv"
 
 data:
-  train: 'data/to-ml-adult/adult.data'
-  validate: 'data/to-ml-adult/adult.validate'
-  test: 'data/to-ml-adult/adult.test_true'
+  train: '../data/to-ml-adult/adult.data'
+  validate: '../data/to-ml-adult/adult.validate'
+  test: '../data/to-ml-adult/adult.test_true'
   name: 'AdultDataSet'
   seed: 0
 
