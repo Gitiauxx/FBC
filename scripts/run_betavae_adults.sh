@@ -5,7 +5,7 @@ _files="$@"
 for seed in {0..50..1}
 do
 	echo $seed
-	./fbcenv/bin/python3 eval.py --config_path configs/adults/adults_pareto_betavae.yml --seed $seed --gamma 0.0 --beta 0
+	./fbcenv/bin/python3 eval.py --config_path configs/adults/adults_pareto_betavae.yml --seed $seed --gamma 0.0 --beta 0.0
   ./fbcenv/bin/python3 eval.py --config_path configs/adults/adults_pareto_betavae.yml --seed $seed --gamma 0.0 --beta 0.2
   ./fbcenv/bin/python3 eval.py --config_path configs/adults/adults_pareto_betavae.yml --seed $seed --gamma 0.0 --beta 0.4
   ./fbcenv/bin/python3 eval.py --config_path configs/adults/adults_pareto_betavae.yml --seed $seed --gamma 0.0 --beta 0.6

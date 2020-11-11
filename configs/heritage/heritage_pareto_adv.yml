@@ -10,8 +10,6 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'heritage_adv_auditor'
+name: 'heritage_adv_eo'
 
-logging_dir: './summaries'
-
-checkpoints: './checkpoints'
+logging_dir: '/scratch/xgitiaux/Comp'

@@ -1,9 +1,9 @@
 experiment: "heritage-betavae"
 
 data:
-  train: 'data/to-ml-heritage/heritage-train.csv'
-  validate: 'data/to-ml-heritage/heritage-validate.csv'
-  test: 'data/to-ml-heritage/heritage-test.csv'
+  train: '../data/to-ml-heritage/heritage-train.csv'
+  validate: '../data/to-ml-heritage/heritage-validate.csv'
+  test: '../data/to-ml-heritage/heritage-test.csv'
   name: 'HeritageDataset'
 
 batch_size: 128
