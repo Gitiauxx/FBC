@@ -1,4 +1,4 @@
-autoencoder: 'configs/adults/adult_betavae.yml'
+autoencoder: 'configs/adults/adults_betavae.yml'
 
 probes_list:
   - 'configs/probes/multi_width_128_depth_2.yml'
