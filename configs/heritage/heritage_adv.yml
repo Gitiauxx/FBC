@@ -36,6 +36,7 @@ ploss:
 device: 'cpu'
 n_epochs: 50
 beta: 0.0
+gamma: 0.0
 method: 'adversarial'
 nclass_outcome: 1
 nclass_sensitive: 18
