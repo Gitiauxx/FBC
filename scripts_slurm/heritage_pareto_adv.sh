@@ -15,22 +15,14 @@
 
 echo $SLURM_ARRAY_TASK_ID
 ../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.05
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.1
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.15
 ../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.2
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.25
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.3
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.35
 ../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.4
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.6
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.8
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.0
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.2
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.4
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.6
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 1.8
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 2.0
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 2.2
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 2.4
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 2.6
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 2.8
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 3.0
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 3.2
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 3.4
-../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 3.6
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.45
+../fvae-env/bin/python3 eval.py --config_path configs/heritage/heritage_pareto_adv.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.5
 
