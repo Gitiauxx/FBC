@@ -1,6 +1,95 @@
 import torch
 import torch.nn as nn
+from torch.nn.parameter import Parameter
 from source.template_model import TemplateModel
+
+class AutoReg(nn.Module):
+
+    def __init__(self, in_features, out_features, k, mask_type='A'):
+        super().__init__()
+
+        self.weight = Parameter(torch.FloatTensor(in_features, out_features), requires_grad=True)
+        self.bias = Parameter(torch.FloatTensor(out_features), requires_grad=True)
+
+        assert mask_type in ['A', 'B'], "Unknown Mask Type"
+
+        if mask_type == 'A':
+            self.register_buffer('mask', torch.ones(k, in_features, out_features))
+            for i in range(k - 1):
+                self.mask[i, (i+1):, :] = 0
+
+        if mask_type == 'B':
+            self.register_buffer('mask', torch.ones(k, in_features, out_features))
+
+        self.mask_type = mask_type
+        self.param_init()
+
+    def param_init(self):
+        """
+        Xavier's initialization
+        """
+        for layer in self.modules():
+            if hasattr(layer, 'weight'):
+
+                if isinstance(layer, (nn.BatchNorm1d, nn.BatchNorm2d, nn.PReLU, nn.Tanh)):
+                    nn.init.normal_(layer.weight, mean=1., std=0.02)
+                else:
+                    nn.init.xavier_normal_(layer.weight)
+            if hasattr(layer, 'bias'):
+                nn.init.constant_(layer.bias, 0.)
+
+
+    def forward(self, x):
+        if self.mask_type == 'A':
+            w = self.weight[None, ...] * self.mask
+            xw = torch.matmul(x, w)
+            xw = xw.permute(1, 2, 0)
+
+        else:
+            xx = x.transpose(-2, -1)
+            xw = torch.matmul(xx, self.weight)
+            xw = xw.transpose(-2, -1)
+
+        return xw + self.bias[None, :, None]
+
+
+class RegLayer(TemplateModel):
+
+    def __init__(self, in_features, out_dim, out_features=64, nclass=0 , k=10, activation_out=None):
+        super().__init__()
+
+        self.layer1 = AutoReg(in_features, out_features, k, mask_type='A')
+        self.ReLU_1 = nn.ReLU()
+
+        self.layer2 = AutoReg(out_features, out_features, k, mask_type='B')
+        self.ReLU_2 = nn.ReLU()
+
+        self.layer3 = AutoReg(out_features + nclass, out_features, k, mask_type='B')
+        self.ReLU_3 = nn.ReLU()
+        self.layer4 = AutoReg(out_features, out_dim, k, mask_type='B')
+
+        self.activation_out = activation_out
+
+    def forward(self, x, s):
+
+        x = self.layer1(x)
+        x = self.ReLU_1(x)
+
+        x = self.layer2(x)
+        x = self.ReLU_2(x)
+
+        # if s is not None:
+        #     s = s[..., None]
+        #     x = torch.cat([x, s.repeat(1, 1, x.shape[-1])], dim=1)
+
+        x = self.layer3(x)
+        x = self.ReLU_3(x)
+
+        if self.activation_out is None:
+            return self.layer4(x)
+
+        elif self.activation_out == 'sigmoid':
+            return nn.Sigmoid()(self.layer4(x))
 
 
 class MaskedCNN(nn.Conv2d):

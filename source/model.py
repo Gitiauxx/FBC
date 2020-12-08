@@ -141,7 +141,7 @@ class Model(object):
             if self.method == 'compression':
                 loss = self.loss.forward(target, output)
                 prelogits = self.pmodel.forward(b, sensitive)
-                ploss = self.ploss.forward(b, prelogits)
+                ploss = self.ploss.forward(b, prelogits.squeeze(1))
                 loss = loss + self.beta * ploss
 
             else:
@@ -251,25 +251,25 @@ class Model(object):
                 acc = accuracy_from_logits(b, prelogits)
                 accuracy += acc.detach().cpu() * len(input) / len(data_loader.dataset)
 
-                entr_loss = self.ploss.forward(b, prelogits)
+                entr_loss = self.ploss.forward(b, prelogits.squeeze(1))
                 entr += entr_loss.detach().cpu() * len(input) / len(data_loader.dataset)
 
-                if len(sensitive.shape) > 1:
-                    sensitive = sensitive[:, None, None, ...]
-
-                    b = b[:, :, :, None]
-                    pi_s = torch.sum(sensitive, 0)
-                    pi_s = pi_s[None, ...]
-
-                    b0 = torch.sum(b * sensitive, 0) / (pi_s + eps)
-                    b1 = torch.sum(b * (1 - sensitive), 0) / (sensitive.shape[0] - pi_s + eps)
-
-                else:
-                    b0 = torch.mean(b[sensitive == 0, ...], 0)
-                    b1 = torch.mean(b[sensitive == 1, ...], 0)
-
-                m_loss = torch.mean(torch.abs(b0 - b1))
-                mask_loss += m_loss.detach().cpu() * len(input) / len(data_loader.dataset)
+                # if len(sensitive.shape) > 1:
+                #     sensitive = sensitive[:, None, None, ...]
+                #
+                #     b = b[:, :, :, None]
+                #     pi_s = torch.sum(sensitive, 0)
+                #     pi_s = pi_s[None, ...]
+                #
+                #     b0 = torch.sum(b * sensitive, 0) / (pi_s + eps)
+                #     b1 = torch.sum(b * (1 - sensitive), 0) / (sensitive.shape[0] - pi_s + eps)
+                #
+                # else:
+                #     b0 = torch.mean(b[sensitive == 0, ...], 0)
+                #     b1 = torch.mean(b[sensitive == 1, ...], 0)
+                #
+                # m_loss = torch.mean(torch.abs(b0 - b1))
+                # mask_loss += m_loss.detach().cpu() * len(input) / len(data_loader.dataset)
 
             elif self.method == 'adversarial':
                 if len(sensitive.shape) > 1:

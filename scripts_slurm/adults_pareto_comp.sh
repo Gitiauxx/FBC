@@ -14,20 +14,20 @@
 #SBATCH --array=0-50
 
 echo $SLURM_ARRAY_TASK_ID
-#../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0
-#../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.025
-#../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.05
-#../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.075
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.1
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.125
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.15
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.175
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.2
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.225
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.275
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.3
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.325
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.35
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.375
-../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.4
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.025
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.05
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.075
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.1
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg._regyml --seed $SLURM_ARRAY_TASK_ID --beta 0.125
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.15
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.175
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.2
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.225
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.275
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.3
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.325
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.35
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.375
+../fvae-env/bin/python3 eval.py --config_path configs/adults/adults_pareto_fbc_reg.yml --seed $SLURM_ARRAY_TASK_ID --beta 0.4
 

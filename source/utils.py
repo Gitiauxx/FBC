@@ -98,7 +98,7 @@ def positive_from_logits(logits, sensitive, y=None, eps=10**(-8)):
         y = y[:, None]
         pi_s = torch.sum(sensitive, 0)
         pp1_s = torch.sum(sensitive * (1 - y), 0)
-        pp0_s = torch.sum((1 - sensitive) * (1 -y))
+        pp0_s = torch.sum((1 - sensitive) * (1 - y))
 
         p0 = torch.sum(ypred * sensitive, 0) / (pi_s + eps)
         p1 = torch.sum(ypred * (1 - sensitive), 0) / (sensitive.shape[0] - pi_s + eps)
@@ -106,8 +106,8 @@ def positive_from_logits(logits, sensitive, y=None, eps=10**(-8)):
     if y is None:
         return p0, p1
 
-    pp1 = torch.sum(ypred * sensitive * y, 0) / (pp1_s + eps)
-    pp0 = torch.sum(ypred * (1 - sensitive) * y, 0) / (pp0_s + eps)
+    pp1 = torch.sum(ypred * sensitive * y, 0)
+    pp0 = torch.sum(ypred * (1 - sensitive) * y, 0)
 
     return p0, p1, pp1, pp0
 

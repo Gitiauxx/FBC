@@ -148,7 +148,7 @@ class FC(TemplateModel):
         out = self.decode(bkk)
         out = (out + 1) / 2
 
-        return out, b, [bkkrand, srand]
+        return out, b.reshape(-1, self.zk * self.k), [bkkrand, srand]
 
     def param_init(self):
         """

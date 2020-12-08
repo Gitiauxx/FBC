@@ -1,4 +1,4 @@
-autoencoder: 'configs/adults/adults_fbc.yml'
+autoencoder: 'configs/adults/adults_fbc_reg.yml'
 
 probes_list:
   - 'configs/probes/multi_width_128_depth_2.yml'
@@ -12,6 +12,5 @@ seed: 0
 
 name: 'adult_fbc_eo_autoreg'
 
-logging_dir: './summaries'
-  #'/scratch/xgitiaux/Comp'
+logging_dir: '/scratch/xgitiaux/Comp'
 

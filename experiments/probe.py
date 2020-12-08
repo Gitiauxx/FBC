@@ -502,8 +502,10 @@ class ProbePareto(ProbeFairness):
 
                 P1 += p1 * sensitive_1 * len(input)
                 P0 += p0 * (1 - sensitive_1) * len(input)
-                PP1 += pp1 * (torch.argmax(sensitive, -1) * outcome).sum(0)
-                PP0 += pp0 * ((1 - torch.argmax(sensitive, -1)) * outcome).sum(0)
+                PP1 += pp1 \
+                       #* (torch.argmax(sensitive, -1) * outcome).sum(0)
+                PP0 += pp0 \
+                       #* ((1 - torch.argmax(sensitive, -1)) * outcome).sum(0)
 
             else:
                 predictions = torch.argmax(output, -1).detach().cpu()
@@ -521,8 +523,8 @@ class ProbePareto(ProbeFairness):
             s1 += sensitive_1 * len(input)
             s0 += (1 - sensitive_1) * len(input)
 
-            SP1 += (torch.argmax(sensitive, -1) * outcome).sum(0)
-            SP0 += (torch.argmax(sensitive, -1) * outcome).sum(0)
+            SP1 += (torch.argmax(sensitive, -1) * (1 - outcome)).sum(0)
+            SP0 += (torch.argmax(sensitive, -1) *  (1 - outcome)).sum(0)
 
         if nclass > 1:
             s1 = s1[None, ...]
