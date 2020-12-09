@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --job-name=adults_eo
-#SBATCH --output=/scratch/xgitiaux/adults_eobv_%j_%a.out
-#SBATCH --error=/scratch/xgitiaux/adults_eobv_%j_%a.error
+#SBATCH --output=/scratch/xgitiaux/adults_eoadv_%j_%a.out
+#SBATCH --error=/scratch/xgitiaux/adults_eoadv_%j_%a.error
 #SBATCH --mail-user=xgitiaux@gmu.edu
 #SBATCH --mail-type=END
 #SBATCH --export=ALL

@@ -376,6 +376,59 @@ class Compas(Dataset):
         return len(self.data)
 
 
+class SynthDataset(Dataset):
+
+    def __init__(self, n, d=2, alpha=0, gamma=0, noise=0.1):
+
+        x = np.zeros((n, d))
+        s = np.random.randint(low=0, high=2, size=n)
+        x[:, 0] = np.random.randn(n)
+
+        for i in np.arange(1, d):
+            factorization = 2 * np.random.randint(low=0, high=2, size=(n, i)) * alpha - alpha
+            u = np.random.randn(n)
+            v = (x[:, :i] * factorization).sum(-1) + u + s * gamma
+            x[:, i] = v * (v > 0)
+
+        self.x = x
+        self.s = np.zeros((n, 2))
+        self.s[:, 0] = s
+        self.s[:, 1] =  1 - s
+        error = np.random.randn(n)
+        self.y = (x.mean(-1) + noise * error > 1).astype('int32')
+
+    @classmethod
+    def from_dict(cls, config_data, type='train'):
+        """
+        Create a dataset from a config dictionary
+        :param: config_dict : configuration dictionary
+        """
+        if type == 'train':
+            n = config_data['ntrain']
+        elif type == 'test':
+            n = config_data['ntest']
+        elif type =='validate':
+            n = config_data['nvalidate']
+
+        d = config_data['d']
+        gamma = config_data['gamma']
+        alpha = config_data['alpha']
+
+        return cls(n, d=d, alpha=alpha, gamma=gamma)
+
+    def __getitem__(self, idx):
+
+        x = torch.from_numpy(self.x[idx, ...]).float()
+        y = torch.tensor(self.y[idx]).float()
+        s = torch.tensor(self.s[idx, :]).float()
+
+        return {'input': x, 'target': x, 'outcome': y, 'sensitive': s}
+
+    def __len__(self):
+        return self.x.shape[0]
+
+
+
 class RepDataset(Dataset):
     """
     Generate represenation using the generator function that takes
