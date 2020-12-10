@@ -43,13 +43,13 @@ echo $SLURM_ARRAY_TASK_ID
 #../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 5.2
 #../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 5.4
 #../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 5.6
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 5.8
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 6.0
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 6.5
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 7.0
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 7.5
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 8.0
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 8.5
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 9.0
-../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 9.5
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 10.0
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 12.5
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 15.0
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 17.5
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 20.0
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 25.0
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 30.0
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 35.0
+../fvae-env/bin/python3 eval.py --config_path configs/synthetic/synth_pareto_betavae.yml --seed $SLURM_ARRAY_TASK_ID --beta 40.0
 
