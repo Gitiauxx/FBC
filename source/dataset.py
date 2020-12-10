@@ -382,10 +382,11 @@ class SynthDataset(Dataset):
 
         x = np.zeros((n, d))
         s = np.random.randint(low=0, high=2, size=n)
-        x[:, 0] = np.random.randn(n)
+        x[:, 0] = 2 * np.random.randint(low=0, high=2, size=n)
+            #np.random.randn(n)
 
         for i in np.arange(1, d):
-            factorization = 2 * np.random.randint(low=0, high=2, size=(n, i)) * alpha - alpha
+            factorization = 2 * np.random.randint(low=0, high=2, size=(1, i)) * alpha - alpha
             u = np.random.randn(n)
             v = (x[:, :i] * factorization).sum(-1) + u + (2 * s -1) * gamma
             x[:, i] = 2 * (v > 0).astype('int32') - 1
