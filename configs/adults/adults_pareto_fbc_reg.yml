@@ -10,7 +10,7 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'adult_fbc_eo_autoreg'
+name: 'adult_fbc_eo_autoreg40'
 
 logging_dir: '/scratch/xgitiaux/Comp'
 
