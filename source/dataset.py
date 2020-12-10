@@ -387,15 +387,15 @@ class SynthDataset(Dataset):
         for i in np.arange(1, d):
             factorization = 2 * np.random.randint(low=0, high=2, size=(n, i)) * alpha - alpha
             u = np.random.randn(n)
-            v = (x[:, :i] * factorization).sum(-1) + u + s * gamma
-            x[:, i] = v * (v > 0)
+            v = (x[:, :i] * factorization).sum(-1) + u + (2 * s -1) * gamma
+            x[:, i] = 2 * (v > 0).astype('int32') - 1
 
         self.x = x
         self.s = np.zeros((n, 2))
         self.s[:, 0] = s
-        self.s[:, 1] =  1 - s
+        self.s[:, 1] = 1 - s
         error = np.random.randn(n)
-        self.y = (x.mean(-1) + noise * error > 1).astype('int32')
+        self.y = (x.mean(-1) + noise * error > 0).astype('int32')
 
     @classmethod
     def from_dict(cls, config_data, type='train'):

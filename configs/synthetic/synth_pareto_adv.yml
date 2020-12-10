@@ -12,5 +12,6 @@ seed: 0
 
 name: 'synth_adv_alpha0'
 
-logging_dir: '/scratch/xgitiaux/Comp'
+logging_dir: './summaries'
+  #/scratch/xgitiaux/Comp'
 
