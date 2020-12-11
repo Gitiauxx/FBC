@@ -41,7 +41,7 @@ ploss:
   name: 'CECondLoss'
 
 device: 'cpu'
-n_epochs: 50
+n_epochs: 100
 method: 'compression'
 gamma: 0
 beta: 0
