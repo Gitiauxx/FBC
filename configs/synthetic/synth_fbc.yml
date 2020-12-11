@@ -15,7 +15,7 @@ net:
   name: 'FC'
   zdim: 4
   zk: 2
-  k: 10
+  k: 8
   depth: 2
   depth_dec: 2
   width_dec: 64
