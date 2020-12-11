@@ -29,7 +29,7 @@ pmodel:
   name: 'RegLayer'
   learning_rate: 0.0001
   out_features: 64
-  k: 20
+  k: 16
   in_features: 20
   out_dim: 1
 
