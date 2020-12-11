@@ -10,7 +10,7 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'synth_betavae_alpha2_exp2'
+name: 'synth_betavae_alpha2_exp3'
 
 logging_dir: '/scratch/xgitiaux/Comp'
 
