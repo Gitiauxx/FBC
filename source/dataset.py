@@ -388,10 +388,10 @@ class SynthDataset(Dataset):
         for i in np.arange(1, d):
             factorization = 2 * np.random.randint(low=0, high=2, size=(n, i)) * alpha - alpha
             u = np.random.randn(n)
-            v = (x[:, :i] * factorization).sum(-1) + u + (2 * s -1) * gamma
+            v = (x[:, :i] * factorization).sum(-1) + u
             x[:, i] = 2 * (v > 0).astype('int32') - 1
 
-        self.x = x
+        self.x = x * (x + (2 * s[:, None] -1) * gamma > 0)
         self.s = np.zeros((n, 2))
         self.s[:, 0] = s
         self.s[:, 1] = 1 - s
