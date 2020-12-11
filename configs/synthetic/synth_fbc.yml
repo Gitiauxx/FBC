@@ -7,7 +7,7 @@ data:
   name: 'SynthDataset'
   d: 4
   gamma: 1
-  alpha: 2
+  alpha: 0
 
 batch_size: 128
 
@@ -21,13 +21,13 @@ net:
   width_dec: 64
   width: 64
   input_dim: 4
-  learning_rate: 0.001
+  learning_rate: 0.0001
   sigma: 1
   sdim: 10
 
 pmodel:
   name: 'RegLayer'
-  learning_rate: 0.001
+  learning_rate: 0.0001
   out_features: 128
   k: 16
   in_features: 16
@@ -41,7 +41,7 @@ ploss:
   name: 'CECondLoss'
 
 device: 'cpu'
-n_epochs: 100
+n_epochs: 50
 method: 'compression'
 gamma: 0
 beta: 0
