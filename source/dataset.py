@@ -387,8 +387,8 @@ class SynthDataset(Dataset):
         for i in np.arange(1, d):
             factorization = 2 * np.random.randint(low=0, high=2, size=(n, i)) * alpha - alpha
             u = np.random.randn(n)
-            v = (x[:, :i] * factorization ** 2).mean(-1)
-            x[:, i] = u * (v > 0)
+            v = (x[:, :i] * factorization).mean(-1)
+            x[:, i] = u * (v + u > 0)
 
         self.x = x * (x + (2 * s[:, None] - 1) * gamma > 0)
         self.s = np.zeros((n, 2))

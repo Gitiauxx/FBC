@@ -10,6 +10,6 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'synth_fbc_alpha02_dim4_exp9_prod'
+name: 'synth_fbc_alpha1_dim4_exp10'
 
 logging_dir: '/scratch/xgitiaux/Comp'
