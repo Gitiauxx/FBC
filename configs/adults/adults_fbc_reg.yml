@@ -13,7 +13,7 @@ net:
   name: 'FC'
   zdim: 10
   zk: 10
-  k: 4
+  k: 2
   depth: 2
   depth_dec: 2
   width_dec: 64
@@ -27,8 +27,8 @@ pmodel:
   name: 'RegLayer'
   learning_rate: 0.0001
   out_features: 128
-  k: 40
-  in_features: 40
+  k: 20
+  in_features: 20
   out_dim: 1
 
 loss:
