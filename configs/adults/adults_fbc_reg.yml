@@ -1,9 +1,9 @@
 experiment: "adult_fbc"
 
 data:
-  train: '../Data/to-ml-adult/adult.data'
-  validate: '../Data/to-ml-adult/adult.validate'
-  test: '../Data/to-ml-adult/adult.test_true'
+  train: '../data/to-ml-adult/adult.data'
+  validate: '../data/to-ml-adult/adult.validate'
+  test: '../data/to-ml-adult/adult.test_true'
   name: 'AdultDataSet'
   seed: 0
   range_data: 10000
@@ -27,7 +27,7 @@ net:
 pmodel:
   name: 'RegLayer'
   learning_rate: 0.0001
-  out_features: 64
+  out_features: 128
   k: 40
   in_features: 40
   out_dim: 1
