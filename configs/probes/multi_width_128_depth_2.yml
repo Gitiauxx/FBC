@@ -10,6 +10,6 @@ loss:
 
 learning_rate: 0.0001
 device: 'cpu'
-n_epochs: 200
+n_epochs: 300
 
 
