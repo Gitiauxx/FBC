@@ -12,7 +12,6 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'adult_adv_eo2'
+name: 'adult_adv_eo3'
 
-logging_dir: './summaries'
-  #'/scratch/xgitiaux/Comp'
+logging_dir: '/scratch/xgitiaux/Comp'

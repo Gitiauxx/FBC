@@ -6,6 +6,7 @@ data:
   test: '../data/to-ml-adult/adult.test_true'
   name: 'AdultDataSet'
   seed: 0
+  range_data: 10000
 
 batch_size: 128
 

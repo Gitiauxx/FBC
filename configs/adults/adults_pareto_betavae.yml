@@ -12,6 +12,6 @@ experiment_type: 'predict_outcome_sensitive'
 
 seed: 0
 
-name: 'adult_betavae_eo'
+name: 'adult_betavae_eo2'
 
 logging_dir: '/scratch/xgitiaux/Comp'
