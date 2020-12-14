@@ -280,12 +280,13 @@ class Probe(object):
             probe.train(self.validate_rep_loader, self.test_rep_loader, n_epochs,
                         self.autoencoder.net,
                         self.results['classifier'][tag], nclass=self.nclass, transfer=transfer)
-            accuracy, demographic_parity, eo = probe.eval(self.test_rep_loader,
+            accuracy, demographic_parity, eo, neo = probe.eval(self.test_rep_loader,
                                                       self.autoencoder.net, nclass=self.nclass,
                                                       transfer=transfer)
             self.results['classifier'][tag]['accuracy'] = accuracy.item()
             self.results['classifier'][tag]['demographic_parity'] = demographic_parity.item()
             self.results['classifier'][tag]['eo'] = eo.item()
+            self.results['classifier'][tag]['neo'] = neo.item()
 
 
 class ProbeFairness(object):
