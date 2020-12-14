@@ -12,5 +12,6 @@ seed: 0
 
 name: 'adult_fbc_eo_autoreg20_128'
 
-logging_dir: '/scratch/xgitiaux/Comp'
+logging_dir: './summaries'
+  #'/scratch/xgitiaux/Comp'
 
