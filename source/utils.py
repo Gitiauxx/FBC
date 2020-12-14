@@ -106,10 +106,12 @@ def positive_from_logits(logits, sensitive, y=None, eps=10**(-8)):
     if y is None:
         return p0, p1
 
-    pp1 = torch.sum(ypred * sensitive * y, 0)
-    pp0 = torch.sum(ypred * (1 - sensitive) * y, 0)
+    pp1 = torch.sum(ypred * sensitive * (1 - y), 0)
+    pp0 = torch.sum(ypred * (1 - sensitive) * (1 - y), 0)
+    np1 = torch.sum((1 - ypred) * sensitive * y, 0)
+    np0 = torch.sum((1 - ypred) * (1 - sensitive) * y, 0)
 
-    return p0, p1, pp1, pp0
+    return p0, p1, pp1, pp0, np0, np1
 
 
 def conditional_error_rate_from_densities(densities, sensitive):

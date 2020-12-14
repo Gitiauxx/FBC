@@ -14,4 +14,5 @@ seed: 0
 
 name: 'adult_adv_eo2'
 
-logging_dir: '/scratch/xgitiaux/Comp'
+logging_dir: './summaries'
+  #'/scratch/xgitiaux/Comp'

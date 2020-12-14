@@ -1,11 +1,12 @@
 experiment: "adult_adv"
 
 data:
-  train: '../data/to-ml-adult/adult.data'
-  validate: '../data/to-ml-adult/adult.validate'
-  test: '../data/to-ml-adult/adult.test_true'
+  train: '../Data/to-ml-adult/adult.data'
+  validate: '../Data/to-ml-adult/adult.validate'
+  test: '../Data/to-ml-adult/adult.test_true'
   name: 'AdultDataSet'
   seed: 0
+  range_data: 10000
 
 batch_size: 128
 

@@ -456,16 +456,18 @@ class ProbePareto(ProbeFairness):
             logger.info(f'Epoch: {epoch} Train loss: {train_loss}')
 
             if (epoch % 5 == 0) | (epoch == n_epochs - 1):
-                accuracy, demographic_parity, eo = self.eval(validation_loader,
+                accuracy, demographic_parity, eo, neo = self.eval(validation_loader,
                                                          generator, nclass=nclass)
                 logger.info(f'Epoch: {epoch} Classifier Accuracy: {accuracy}')
                 logger.info(f'Epoch: {epoch} Classifier DP:{demographic_parity}')
                 logger.info(f'Epoch: {epoch} Classifier EO:{eo}')
+                logger.info(f'Epoch: {epoch} Classifier NEO:{neo}')
 
                 writer['validation'][epoch] = {}
                 writer['validation'][epoch]['accuracy'] = accuracy.item()
                 writer['validation'][epoch]['dp'] = demographic_parity.item()
                 writer['validation'][epoch]['pp'] = eo.item()
+                writer['validation'][epoch]['np'] = neo.item()
 
     def eval(self, data_loader, generator, nclass=1, transfer=False):
         """
@@ -483,6 +485,10 @@ class ProbePareto(ProbeFairness):
         SP1 = 0
         PP0 = 0
         SP0 = 0
+        NP0 = 0
+        NP1 = 0
+        NSP0 = 0
+        NSP1 = 0
 
         for _, batch in enumerate(data_loader):
             sensitive = batch['sensitive'].to(self.device)
@@ -498,14 +504,14 @@ class ProbePareto(ProbeFairness):
             sensitive_1 = sensitive.mean(0).detach()
 
             if nclass == 1:
-                p0, p1, pp1, pp0 = positive_from_logits(output, sensitive, y=outcome)
+                p0, p1, pp1, pp0, np0, np1 = positive_from_logits(output, sensitive, y=outcome)
 
                 P1 += p1 * sensitive_1 * len(input)
                 P0 += p0 * (1 - sensitive_1) * len(input)
-                PP1 += pp1 \
-                       #* (torch.argmax(sensitive, -1) * outcome).sum(0)
-                PP0 += pp0 \
-                       #* ((1 - torch.argmax(sensitive, -1)) * outcome).sum(0)
+                PP1 += pp1
+                PP0 += pp0
+                NP0 += np0
+                NP1 += np1
 
             else:
                 predictions = torch.argmax(output, -1).detach().cpu()
@@ -524,7 +530,9 @@ class ProbePareto(ProbeFairness):
             s0 += (1 - sensitive_1) * len(input)
 
             SP1 += (torch.argmax(sensitive, -1) * (1 - outcome)).sum(0)
-            SP0 += (torch.argmax(sensitive, -1) *  (1 - outcome)).sum(0)
+            SP0 += (1 - torch.argmax(sensitive, -1) *  (1 - outcome)).sum(0)
+            NSP1 += (torch.argmax(sensitive, -1) * outcome).sum(0)
+            NSP0 += (1 - torch.argmax(sensitive, -1) * outcome).sum(0)
 
         if nclass > 1:
             s1 = s1[None, ...]
@@ -534,8 +542,11 @@ class ProbePareto(ProbeFairness):
         P0 = P0 / s0
         PP1 = PP1 / SP1
         PP0 = PP0 / SP0
+        NP1 = NP1 / NSP1
+        NP0 = NP0 / NSP0
 
         demographic_parity = torch.mean(torch.abs(P1 - P0)).cpu()
         eo = torch.mean(torch.abs(PP1 - PP0)).cpu()
+        neo = torch.mean(torch.abs(NP1 - NP0)).cpu()
 
-        return accuracy, demographic_parity, eo
+        return accuracy, demographic_parity, eo, neo
