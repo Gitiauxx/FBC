@@ -39,7 +39,7 @@ class Model(object):
     """
 
     def __init__(self, net, loss, pmodel=None, ploss=None, learning_rate={'autoencoder': 0.001, 'pmodel': 0.001},
-                 device='cpu', beta=0, gamma=0, method='compression'):
+                 device='cpu', beta=0, gamma=0, method='compression', auditing=0):
 
         device = torch.device(device)
         self.net = net.to(device)
@@ -57,6 +57,7 @@ class Model(object):
         self.beta = beta
         self.gamma = gamma
         self.method = method
+        self.auditing = auditing
 
         self.optimizer = torch.optim.Adam(list(self.net.parameters()), lr=self.learning_rate, betas=(0.5, 0.999),
                                               weight_decay=1e-5)
@@ -78,6 +79,9 @@ class Model(object):
         name_net = config_dict['net'].pop('name')
         beta = config_dict['beta']
         gamma = config_dict['gamma']
+        auditing = 0
+        if 'auditing' in config_dict:
+            auditing = config_dict['auditing']
 
         method = config_dict['method']
 
@@ -116,11 +120,11 @@ class Model(object):
             pmodel = globals()[name_pmodel].from_dict(config_dict['pmodel'])
 
         model = cls(net, loss, pmodel=pmodel, ploss=ploss, learning_rate=lr,
-                    device=device, beta=beta, gamma=gamma, method=method)
+                    device=device, beta=beta, gamma=gamma, method=method, auditing=auditing)
 
         return model
 
-    def optimize_parameters(self, x, target, sensitive):
+    def optimize_parameters(self, x, target, sensitive, auditing=True):
 
         """
         Optimization of both autoencoder
@@ -142,7 +146,8 @@ class Model(object):
                 loss = self.loss.forward(target, output)
                 prelogits = self.pmodel.forward(b, sensitive)
                 ploss = self.ploss.forward(b, prelogits.squeeze(1))
-                loss = loss + self.beta * ploss
+                if auditing:
+                    loss = loss + self.beta * ploss
 
             else:
                 loss = self.loss.forward(target, output)
@@ -153,7 +158,8 @@ class Model(object):
                 prelogits = self.pmodel.forward(b)
                 ploss = self.ploss.forward(s, prelogits)
 
-                loss = loss - self.beta * ploss
+                if auditing:
+                    loss = loss - self.beta * ploss
 
         elif self.method in ['vae', 'mmd']:
             loss = self.loss.forward(target, output, b, z, sensitive)
@@ -176,6 +182,7 @@ class Model(object):
         for epoch in range(n_epochs):
 
             train_loss = 0
+            auditing = (epoch >= self.auditing)
 
             for _, batch in enumerate(train_loader):
 
@@ -183,7 +190,7 @@ class Model(object):
                 target = batch['target'].to(self.device)
                 sensitive = batch['sensitive'].to(self.device)
 
-                loss = self.optimize_parameters(input, target, sensitive)
+                loss = self.optimize_parameters(input, target, sensitive, auditing=auditing)
                 train_loss += loss.detach().cpu() * len(input) / len(train_loader.dataset)
 
             writer['training']['rec_loss'][epoch] = train_loss.item()
